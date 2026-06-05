@@ -35,19 +35,19 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T007 Create Pool entity in lib/domain/entities/pool.dart (fields: `externalId`, `name`, `createdAt`; value equality on `externalId`; const constructor; copyWith)
-- [ ] T008 [P] Create Stick entity in lib/domain/entities/stick.dart (fields: `externalId`, `poolId`, `name`, `createdAt`; value equality on `externalId`; copyWith)
-- [ ] T009 [P] Create WeeklyBin entity in lib/domain/entities/weekly_bin.dart (fields: `poolId`, `stickIds: List<String>`, `doneStickIds: List<String>`, `createdAt`, `updatedAt`; copyWith for immutable updates)
-- [ ] T010 Create SelectionSession class in lib/domain/entities/selection_session.dart (transient only; fields: `poolId`, `drawnStickIds`, `discardedStickIds`, `availableStickIds`; methods: `discard(stickId)`, `drawNext()`)
-- [ ] T011 Create typed domain failures in lib/domain/failures.dart (sealed class `Failure`; subtypes: `DuplicateNameFailure`, `PoolNotFoundFailure`, `StickNotFoundFailure`, `InsufficientSticksFailure`, `NoReplacementAvailableFailure`)
-- [ ] T012 Create abstract PoolRepository interface in lib/domain/repositories/pool_repository.dart (full interface from contracts/ui-contract.md: watchAllPools, createPool, renamePool, deletePool, watchSticks, addStick, editStick, deleteStick, getWeeklyBin, watchWeeklyBin, confirmSelection, replaceBinStick, removeBinStick, markStickDone)
-- [ ] T013 Create PoolModel in lib/data/models/pool_model.dart (`@collection`; `@Index(unique: true, caseSensitive: false)` on `name`; `toEntity()` and `fromEntity()` mappers)
-- [ ] T014 [P] Create StickModel in lib/data/models/stick_model.dart (`@collection`; composite `@Index(unique: true, caseSensitive: false)` on `[poolId, name]`; mappers)
-- [ ] T015 [P] Create WeeklyBinModel in lib/data/models/weekly_bin_model.dart (`@collection`; `@Index(unique: true)` on `poolId`; mappers)
-- [ ] T016 Run `dart run build_runner build --delete-conflicting-outputs` to generate `*.g.dart` Isar schema + Riverpod provider files; commit all generated files
-- [ ] T017 Create IsarLocalDataSource in lib/data/datasources/isar_local_datasource.dart (open Isar with `[PoolModelSchema, StickModelSchema, WeeklyBinModelSchema]`; expose `isar` instance; handle first-launch seed of empty "Dinner" pool)
-- [ ] T018 Create `isarProvider` FutureProvider in lib/presentation/providers/isar_provider.dart (async-opens Isar; used by all repository providers)
-- [ ] T019 Wire ProviderScope + MaterialApp in lib/main.dart (Riverpod root; router stub with `/` → HomeScreen placeholder; theme scaffold)
+- [X] T007 Create Pool entity in lib/domain/entities/pool.dart (fields: `externalId`, `name`, `createdAt`; value equality on `externalId`; const constructor; copyWith)
+- [X] T008 [P] Create Stick entity in lib/domain/entities/stick.dart (fields: `externalId`, `poolId`, `name`, `createdAt`; value equality on `externalId`; copyWith)
+- [X] T009 [P] Create WeeklyBin entity in lib/domain/entities/weekly_bin.dart (fields: `poolId`, `stickIds: List<String>`, `doneStickIds: List<String>`, `createdAt`, `updatedAt`; copyWith for immutable updates)
+- [X] T010 Create SelectionSession class in lib/domain/entities/selection_session.dart (transient only; fields: `poolId`, `drawnStickIds`, `discardedStickIds`, `availableStickIds`; methods: `discard(stickId)`, `drawNext()`)
+- [X] T011 Create typed domain failures in lib/domain/failures.dart (sealed class `Failure`; subtypes: `DuplicateNameFailure`, `PoolNotFoundFailure`, `StickNotFoundFailure`, `InsufficientSticksFailure`, `NoReplacementAvailableFailure`)
+- [X] T012 Create abstract PoolRepository interface in lib/domain/repositories/pool_repository.dart (full interface from contracts/ui-contract.md: watchAllPools, createPool, renamePool, deletePool, watchSticks, addStick, editStick, deleteStick, getWeeklyBin, watchWeeklyBin, confirmSelection, replaceBinStick, removeBinStick, markStickDone)
+- [X] T013 Create PoolModel in lib/data/models/pool_model.dart (`@collection`; `@Index(unique: true, caseSensitive: false)` on `name`; `toEntity()` and `fromEntity()` mappers)
+- [X] T014 [P] Create StickModel in lib/data/models/stick_model.dart (`@collection`; composite `@Index(unique: true, caseSensitive: false)` on `[poolId, name]`; mappers)
+- [X] T015 [P] Create WeeklyBinModel in lib/data/models/weekly_bin_model.dart (`@collection`; `@Index(unique: true)` on `poolId`; mappers)
+- [X] T016 Run `dart run build_runner build --delete-conflicting-outputs` to generate `*.g.dart` Isar schema + Riverpod provider files; commit all generated files
+- [X] T017 Create IsarLocalDataSource in lib/data/datasources/isar_local_datasource.dart (open Isar with `[PoolModelSchema, StickModelSchema, WeeklyBinModelSchema]`; expose `isar` instance; handle first-launch seed of empty "Dinner" pool)
+- [X] T018 Create `isarProvider` FutureProvider in lib/presentation/providers/isar_provider.dart (async-opens Isar; used by all repository providers)
+- [X] T019 Wire ProviderScope + MaterialApp in lib/main.dart (Riverpod root; router stub with `/` → HomeScreen placeholder; theme scaffold)
 
 **Checkpoint**: Project builds and runs with an empty placeholder screen. All entities, interfaces, and Isar models are in place. No user story logic yet.
 

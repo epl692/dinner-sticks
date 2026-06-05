@@ -2,7 +2,7 @@
 
 **Branch**: `001-dinner-sticks-app` | **Date**: 2026-06-05 | **Spec**: [spec.md](spec.md)
 
-**Phase Status**: Phase 1 ✅ complete (T001–T006 all done; devcontainer built and verified; `flutter analyze` clean; `flutter test` passing)
+**Phase Status**: Phase 1 ✅ complete | Phase 2 ✅ complete (T007–T019 all done; domain entities, Isar models, generated schemas, datasource, Riverpod provider, ProviderScope wired; `flutter analyze` clean; `flutter test` passing)
 
 **Input**: Feature specification from `specs/001-dinner-sticks-app/spec.md`
 
