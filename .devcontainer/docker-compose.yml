@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    working_dir: /workspace/dinner_sticks
+    command: sleep infinity
+    network_mode: host
+    environment:
+      - ANDROID_SDK_ROOT=/opt/android-sdk-linux
+      - ANDROID_HOME=/opt/android-sdk-linux

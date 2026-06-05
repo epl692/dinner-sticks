@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# IDEs
+.idea/
+.vscode/
+*.suo
+
+# Flutter build artifacts at repo root level
+.dart_tool/

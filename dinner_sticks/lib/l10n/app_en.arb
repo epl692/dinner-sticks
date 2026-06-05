@@ -1,0 +1,150 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Dinner Sticks",
+  "@appTitle": { "description": "The application title." },
+
+  "activePoolLabel": "Active pool: {name}. Tap to switch.",
+  "@activePoolLabel": {
+    "description": "Semantic label for the pool-name chip on the home screen.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+
+  "startNewWeekTooltip": "Start new week",
+  "@startNewWeekTooltip": { "description": "Tooltip for the start-new-week icon button." },
+
+  "manageMealIdeasTooltip": "Manage meal ideas",
+  "@manageMealIdeasTooltip": { "description": "Tooltip / semantic label for the pool management icon button." },
+
+  "randomPickTooltip": "Pick a random meal from this week's plan",
+  "@randomPickTooltip": { "description": "Tooltip / semantic label for the random-pick FAB." },
+
+  "replaceWeekMealsTitle": "Replace this week's meals?",
+  "@replaceWeekMealsTitle": { "description": "Title of the confirmation dialog when a bin already exists." },
+
+  "replaceWeekMealsContent": "You already have meals selected. Starting over will replace them.",
+  "@replaceWeekMealsContent": { "description": "Body text of the replace-week-meals confirmation dialog." },
+
+  "keepCurrentLabel": "Keep current",
+  "@keepCurrentLabel": { "description": "Button to dismiss the replace-week-meals dialog without changing." },
+
+  "startOverLabel": "Start over",
+  "@startOverLabel": { "description": "Button to confirm replacing the current bin." },
+
+  "replaceLabel": "Replace",
+  "@replaceLabel": { "description": "Action label for replacing a bin stick." },
+
+  "removeLabel": "Remove",
+  "@removeLabel": { "description": "Action label for removing a bin stick." },
+
+  "cancelLabel": "Cancel",
+  "@cancelLabel": { "description": "Generic cancel button label." },
+
+  "confirmLabel": "Confirm",
+  "@confirmLabel": { "description": "Generic confirm button label." },
+
+  "randomLabel": "Random",
+  "@randomLabel": { "description": "Option to pick a random replacement stick." },
+
+  "pickOneLabel": "Pick one",
+  "@pickOneLabel": { "description": "Option to pick a specific replacement stick." },
+
+  "noOtherMealsAvailable": "No other meal ideas available.",
+  "@noOtherMealsAvailable": { "description": "Shown in the pick-one sheet when no replacements exist." },
+
+  "removeFromWeekTitle": "Remove from this week?",
+  "@removeFromWeekTitle": { "description": "Title of the confirmation dialog when removing a stick from the bin." },
+
+  "removeStickMessage": "{name} will be removed from this week's plan but stay in your pool.",
+  "@removeStickMessage": {
+    "description": "Body of the remove-from-week confirmation dialog.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+
+  "selectWeekMealsTitle": "Select this week's meals",
+  "@selectWeekMealsTitle": { "description": "Title of the WeeklySelectionScreen app bar." },
+
+  "discardTooltip": "Discard",
+  "@discardTooltip": { "description": "Tooltip on the discard button in the weekly-selection list." },
+
+  "discardStickLabel": "Discard {name} and draw a replacement",
+  "@discardStickLabel": {
+    "description": "Semantic label for the discard button in WeeklySelectionScreen.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+
+  "limitedMealsMessage": "{count, plural, =1{Only 1 meal available in this pool.} other{Only {count} meals available in this pool.}}",
+  "@limitedMealsMessage": {
+    "description": "Notice shown when the pool has fewer than 5 sticks.",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "mealIdeasTitle": "Meal Ideas: {name}",
+  "@mealIdeasTitle": {
+    "description": "App-bar title for the pool management screen.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+
+  "emptyPoolMessage": "No meal ideas yet.\nTap + to add one.",
+  "@emptyPoolMessage": { "description": "Shown when a pool has no sticks." },
+
+  "addMealIdeaTooltip": "Add meal idea",
+  "@addMealIdeaTooltip": { "description": "Tooltip for the add-meal-idea FAB." },
+
+  "deleteMealIdeaTitle": "Delete meal idea",
+  "@deleteMealIdeaTitle": { "description": "Title of the delete-meal-idea confirmation dialog." },
+
+  "deleteMealIdeaMessage": "Remove \"{name}\" from this pool?",
+  "@deleteMealIdeaMessage": {
+    "description": "Body of the delete-meal-idea confirmation dialog.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+
+  "editLabel": "Edit",
+  "@editLabel": { "description": "Generic edit action label." },
+
+  "deleteLabel": "Delete",
+  "@deleteLabel": { "description": "Generic delete action label." },
+
+  "switchPoolTitle": "Switch pool",
+  "@switchPoolTitle": { "description": "App-bar title for the pool-switcher screen." },
+
+  "addPoolTooltip": "Add pool",
+  "@addPoolTooltip": { "description": "Tooltip for the add-pool FAB." },
+
+  "newPoolTitle": "New pool",
+  "@newPoolTitle": { "description": "Title shown above the new-pool text field." },
+
+  "poolNameHint": "e.g. Breakfast",
+  "@poolNameHint": { "description": "Placeholder text for the pool-name text field." },
+
+  "createLabel": "Create",
+  "@createLabel": { "description": "Button to confirm creating a new pool." },
+
+  "emptyBinMessage": "No meals planned this week",
+  "@emptyBinMessage": { "description": "Headline shown on the empty-bin prompt." },
+
+  "selectWeekMealsButton": "Select this week's meals",
+  "@selectWeekMealsButton": { "description": "CTA button text on the empty-bin prompt." },
+
+  "stickSelectedHint": "selected for tonight",
+  "@stickSelectedHint": { "description": "Semantic hint when a bin stick is highlighted." },
+
+  "stickInPlanHint": "in this week's plan",
+  "@stickInPlanHint": { "description": "Semantic hint for a bin stick that is not highlighted." },
+
+  "markStickDoneLabel": "Mark {name} as done and remove from this week's plan",
+  "@markStickDoneLabel": {
+    "description": "Semantic label for the Done button on a highlighted bin stick.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+
+  "doneLabel": "Done",
+  "@doneLabel": { "description": "Label on the Done button for a highlighted bin stick." },
+
+  "errorMessage": "Error: {error}",
+  "@errorMessage": {
+    "description": "Generic error display.",
+    "placeholders": { "error": { "type": "String" } }
+  }
+}

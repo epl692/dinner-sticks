@@ -1,0 +1,58 @@
+# Flutter/Dart build artifacts
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.iml
+
+# Android
+android/.gradle/
+android/local.properties
+android/key.properties
+android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/gradle/wrapper/gradle-wrapper.jar
+
+# iOS
+ios/Flutter/flutter_export_environment.sh
+ios/.generated/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Runner/GeneratedPluginRegistrant.*
+ios/Pods/
+
+# Xcode
+**/*.xcworkspace/xcuserdata/
+**/*.xcodeproj/xcuserdata/
+
+# macOS
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Flutter/ephemeral/
+
+# IDEs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# Isar database files (runtime data, not committed)
+*.isar
+*.isar.lock
+
+# Isar native library symlink (devcontainer-specific, created via ln -sf)
+libisar.so
