@@ -20,12 +20,12 @@
 
 **Purpose**: Flutter project creation and dev environment. No user story work until Phase 2 is complete.
 
-- [ ] T001 Initialize Flutter project: `flutter create dinner_sticks --org com.dinnersticks --platforms ios,android` at repository root
-- [ ] T002 Add all dependencies to pubspec.yaml: runtime (`isar`, `isar_flutter_libs`, `flutter_riverpod`, `riverpod_annotation`, `uuid`); dev (`isar_generator`, `riverpod_generator`, `build_runner`, `flutter_test`, `mockito`, `integration_test`, `very_good_analysis`, `coverage`)
-- [ ] T003 [P] Configure lint rules in analysis_options.yaml using `very_good_analysis` ruleset
-- [ ] T004 [P] Create .devcontainer/Dockerfile: base `ghcr.io/cirruslabs/flutter:stable`, install Android SDK platform-34 + build-tools-34, expose ports for adb
-- [ ] T005 [P] Create .devcontainer/docker-compose.yml: mount project root into /workspace, set working directory
-- [ ] T006 Create full directory skeleton: `lib/domain/{entities,repositories,usecases/{pool,stick,bin}}`, `lib/data/{models,datasources,repositories}`, `lib/presentation/{screens/{home,pool_management,weekly_selection,pool_switcher},widgets,providers}`, `test/{domain/{entities,usecases},data/repositories}`, `integration_test/`
+- [X] T001 Initialize Flutter project: `flutter create dinner_sticks --org com.dinnersticks --platforms ios,android` at repository root — ran inside devcontainer; android/ and ios/ platform directories generated
+- [X] T002 Add all dependencies to pubspec.yaml: runtime (`isar`, `isar_flutter_libs`, `flutter_riverpod`, `riverpod_annotation`, `uuid`); dev (`isar_generator`, `riverpod_generator`, `build_runner`, `flutter_test`, `mockito`, `integration_test`, `very_good_analysis`, `coverage`)
+- [X] T003 [P] Configure lint rules in analysis_options.yaml using `very_good_analysis` ruleset
+- [X] T004 [P] Create .devcontainer/Dockerfile: base `ghcr.io/cirruslabs/flutter:stable`, install Android SDK platform-34 + build-tools-34, expose ports for adb
+- [X] T005 [P] Create .devcontainer/docker-compose.yml: mount project root into /workspace, set working directory
+- [X] T006 Create full directory skeleton: `lib/domain/{entities,repositories,usecases/{pool,stick,bin}}`, `lib/data/{models,datasources,repositories}`, `lib/presentation/{screens/{home,pool_management,weekly_selection,pool_switcher},widgets,providers}`, `test/{domain/{entities,usecases},data/repositories}`, `integration_test/`
 
 ---
 
