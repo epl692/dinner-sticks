@@ -3,13 +3,14 @@ import 'package:meta/meta.dart';
 /// A single meal idea belonging to one Pool.
 @immutable
 class Stick {
-  /// Creates a [Stick].
-  const Stick({
+  /// Creates a [Stick], trimming [name] and asserting it is non-empty.
+  Stick({
     required this.externalId,
     required this.poolId,
-    required this.name,
+    required String name,
     required this.createdAt,
-  });
+  })  : name = name.trim(),
+        assert(name.trim().isNotEmpty, 'name must not be empty');
 
   /// Unique identifier (UUID v4). Immutable after creation.
   final String externalId;

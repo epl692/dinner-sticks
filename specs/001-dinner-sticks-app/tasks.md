@@ -61,22 +61,22 @@
 
 ### Tests — Write FIRST, confirm FAIL before implementing (Red)
 
-- [ ] T020 [P] [US1] Write failing unit tests for Stick name validation in test/domain/entities/stick_test.dart (empty name rejected; name trimmed; equality by externalId)
-- [ ] T021 [P] [US1] Write failing unit tests for AddStick use-case in test/domain/usecases/add_stick_test.dart (success path; duplicate name → `DuplicateNameFailure`; empty name → error; mock PoolRepository via mockito)
-- [ ] T022 [P] [US1] Write failing unit tests for EditStick use-case in test/domain/usecases/edit_stick_test.dart (success; rename to duplicate → `DuplicateNameFailure`; stick not found → `StickNotFoundFailure`)
-- [ ] T023 [P] [US1] Write failing unit tests for DeleteStick use-case in test/domain/usecases/delete_stick_test.dart (success; stick in bin stays in bin after delete; stick not found → `StickNotFoundFailure`)
-- [ ] T024 [P] [US1] Write failing repository tests for stick CRUD in test/data/repositories/pool_repository_impl_us1_test.dart (addStick persists, editStick updates, deleteStick removes; duplicate name throws; uses in-memory Isar via `Isar.open` in test setup)
-- [ ] T025 [US1] Write failing integration test for US1 user journey in integration_test/us1_pool_management_test.dart (add 3 sticks, edit one, delete one, verify 2 remain, restart and verify persistence)
+- [X] T020 [P] [US1] Write failing unit tests for Stick name validation in test/domain/entities/stick_test.dart (empty name rejected; name trimmed; equality by externalId)
+- [X] T021 [P] [US1] Write failing unit tests for AddStick use-case in test/domain/usecases/add_stick_test.dart (success path; duplicate name → `DuplicateNameFailure`; empty name → error; mock PoolRepository via mockito)
+- [X] T022 [P] [US1] Write failing unit tests for EditStick use-case in test/domain/usecases/edit_stick_test.dart (success; rename to duplicate → `DuplicateNameFailure`; stick not found → `StickNotFoundFailure`)
+- [X] T023 [P] [US1] Write failing unit tests for DeleteStick use-case in test/domain/usecases/delete_stick_test.dart (success; stick in bin stays in bin after delete; stick not found → `StickNotFoundFailure`)
+- [X] T024 [P] [US1] Write failing repository tests for stick CRUD in test/data/repositories/pool_repository_impl_us1_test.dart (addStick persists, editStick updates, deleteStick removes; duplicate name throws; uses in-memory Isar via `Isar.open` in test setup)
+- [X] T025 [US1] Write failing integration test for US1 user journey in integration_test/us1_pool_management_test.dart (add 3 sticks, edit one, delete one, verify 2 remain, restart and verify persistence)
 
 ### Implementation (Green → Refactor)
 
-- [ ] T026 [US1] Implement AddStick use-case in lib/domain/usecases/stick/add_stick.dart (trim name; check empty; call `repository.addStick`; duplicate failure propagated)
-- [ ] T027 [P] [US1] Implement EditStick use-case in lib/domain/usecases/stick/edit_stick.dart
-- [ ] T028 [P] [US1] Implement DeleteStick use-case in lib/domain/usecases/stick/delete_stick.dart
-- [ ] T029 [US1] Implement PoolRepositoryImpl stick + pool CRUD in lib/data/repositories/pool_repository_impl.dart: `addStick` (enforce case-insensitive unique within pool → `DuplicateNameFailure`), `editStick`, `deleteStick`, `watchSticks`, `watchAllPools`, first-launch "Dinner" pool seed via `IsarLocalDataSource`
-- [ ] T030 [P] [US1] Create pool/stick Riverpod providers in lib/presentation/providers/pool_providers.dart: `allPoolsProvider` (StreamProvider), `activePoolIdProvider` (StateProvider, defaults to Dinner pool), `activePoolProvider`, `poolSticksProvider(poolId)`
-- [ ] T031 [US1] Create PoolManagementScreen in lib/presentation/screens/pool_management/pool_management_screen.dart (alphabetical stick list; FAB to add; tap stick → edit/delete sheet; inline duplicate warning; 48dp touch targets; Semantics labels per contracts/ui-contract.md)
-- [ ] T032 [US1] Create StickEditorSheet widget in lib/presentation/widgets/stick_editor_sheet.dart (TextField with inline error text for duplicate/empty; confirm/cancel actions)
+- [X] T026 [US1] Implement AddStick use-case in lib/domain/usecases/stick/add_stick.dart (trim name; check empty; call `repository.addStick`; duplicate failure propagated)
+- [X] T027 [P] [US1] Implement EditStick use-case in lib/domain/usecases/stick/edit_stick.dart
+- [X] T028 [P] [US1] Implement DeleteStick use-case in lib/domain/usecases/stick/delete_stick.dart
+- [X] T029 [US1] Implement PoolRepositoryImpl stick + pool CRUD in lib/data/repositories/pool_repository_impl.dart: `addStick` (enforce case-insensitive unique within pool → `DuplicateNameFailure`), `editStick`, `deleteStick`, `watchSticks`, `watchAllPools`, first-launch "Dinner" pool seed via `IsarLocalDataSource`
+- [X] T030 [P] [US1] Create pool/stick Riverpod providers in lib/presentation/providers/pool_providers.dart: `allPoolsProvider` (StreamProvider), `activePoolIdProvider` (StateProvider, defaults to Dinner pool), `activePoolProvider`, `poolSticksProvider(poolId)`
+- [X] T031 [US1] Create PoolManagementScreen in lib/presentation/screens/pool_management/pool_management_screen.dart (alphabetical stick list; FAB to add; tap stick → edit/delete sheet; inline duplicate warning; 48dp touch targets; Semantics labels per contracts/ui-contract.md)
+- [X] T032 [US1] Create StickEditorSheet widget in lib/presentation/widgets/stick_editor_sheet.dart (TextField with inline error text for duplicate/empty; confirm/cancel actions)
 
 **Checkpoint**: User Story 1 fully functional. Can add/edit/delete sticks; data survives restart. All T020–T025 tests pass.
 
@@ -90,16 +90,16 @@
 
 ### Tests — Write FIRST, confirm FAIL (Red)
 
-- [ ] T033 [P] [US2] Write failing unit tests for SelectionSession logic in test/domain/entities/selection_session_test.dart (discard moves stick out of drawn into discarded; discarded stick never re-drawn; draw from empty available → null; reduced count when pool has <5 sticks)
-- [ ] T034 [P] [US2] Write failing unit tests for ConfirmWeeklySelection use-case in test/domain/usecases/confirm_weekly_selection_test.dart (saves bin with correct stickIds; replaces existing bin atomically; zero-sticks pool → `InsufficientSticksFailure`)
-- [ ] T035 [US2] Write failing integration test for US2 in integration_test/us2_weekly_selection_test.dart (pool of 7, draw 5, discard 2, confirm, restart, verify bin has 5 non-discarded sticks, verify discarded sticks still in pool)
+- [X] T033 [P] [US2] Write failing unit tests for SelectionSession logic in test/domain/entities/selection_session_test.dart (discard moves stick out of drawn into discarded; discarded stick never re-drawn; draw from empty available → null; reduced count when pool has <5 sticks)
+- [X] T034 [P] [US2] Write failing unit tests for ConfirmWeeklySelection use-case in test/domain/usecases/confirm_weekly_selection_test.dart (saves bin with correct stickIds; replaces existing bin atomically; zero-sticks pool → `InsufficientSticksFailure`)
+- [X] T035 [US2] Write failing integration test for US2 in integration_test/us2_weekly_selection_test.dart (pool of 7, draw 5, discard 2, confirm, restart, verify bin has 5 non-discarded sticks, verify discarded sticks still in pool)
 
 ### Implementation (Green → Refactor)
 
-- [ ] T036 [US2] Implement ConfirmWeeklySelection use-case in lib/domain/usecases/bin/confirm_weekly_selection.dart (validates stickIds non-empty; calls `repository.confirmSelection`)
-- [ ] T037 [US2] Implement PoolRepositoryImpl.confirmSelection and watchWeeklyBin and getWeeklyBin in lib/data/repositories/pool_repository_impl.dart (confirmSelection uses Isar write transaction; overwrites existing WeeklyBinModel for poolId)
-- [ ] T038 [P] [US2] Create bin Riverpod providers in lib/presentation/providers/bin_providers.dart: `weeklyBinProvider(poolId)` (StreamProvider), `selectionSessionProvider` (StateNotifierProvider; drives in-memory SelectionSession)
-- [ ] T039 [US2] Create WeeklySelectionScreen in lib/presentation/screens/weekly_selection/weekly_selection_screen.dart (auto-draw up to 5 on enter; draw-stack UI showing each stick; discard button per stick; confirm/cancel; reduced-count notice when <5; empty-pool guard navigates to PoolManagementScreen; existing-bin confirmation dialog)
+- [X] T036 [US2] Implement ConfirmWeeklySelection use-case in lib/domain/usecases/bin/confirm_weekly_selection.dart (validates stickIds non-empty; calls `repository.confirmSelection`)
+- [X] T037 [US2] Implement PoolRepositoryImpl.confirmSelection and watchWeeklyBin and getWeeklyBin in lib/data/repositories/pool_repository_impl.dart (confirmSelection uses Isar write transaction; overwrites existing WeeklyBinModel for poolId)
+- [X] T038 [P] [US2] Create bin Riverpod providers in lib/presentation/providers/bin_providers.dart: `weeklyBinProvider(poolId)` (StreamProvider), `selectionSessionProvider` (StateNotifierProvider; drives in-memory SelectionSession)
+- [X] T039 [US2] Create WeeklySelectionScreen in lib/presentation/screens/weekly_selection/weekly_selection_screen.dart (auto-draw up to 5 on enter; draw-stack UI showing each stick; discard button per stick; confirm/cancel; reduced-count notice when <5; empty-pool guard navigates to PoolManagementScreen; existing-bin confirmation dialog)
 
 **Checkpoint**: User Story 2 fully functional. Selection, discard/redraw, and bin persistence all work. T033–T035 pass. US1 unaffected.
 
@@ -113,18 +113,18 @@
 
 ### Tests — Write FIRST, confirm FAIL (Red)
 
-- [ ] T041 [P] [US3] Write failing unit tests for MarkStickDone use-case in test/domain/usecases/mark_stick_done_test.dart (atomic: removes from stickIds, adds to doneStickIds; stick not in bin → `StickNotFoundFailure`; already done is idempotent)
-- [ ] T042 [P] [US3] Write failing widget tests for HomeScreen in test/domain/usecases/home_screen_test.dart (bin sticks rendered; random-pick button highlights a stick; manual tap highlights correct stick; done button triggers MarkStickDone; empty bin renders EmptyBinPrompt)
-- [ ] T043 [US3] Write failing integration test for US3 in integration_test/us3_pick_tonight_test.dart (pre-populated bin, random pick, manual pick, mark done, all-done → empty bin state shown)
+- [X] T041 [P] [US3] Write failing unit tests for MarkStickDone use-case in test/domain/usecases/mark_stick_done_test.dart (atomic: removes from stickIds, adds to doneStickIds; stick not in bin → `StickNotFoundFailure`; already done is idempotent)
+- [X] T042 [P] [US3] Write failing widget tests for HomeScreen in test/domain/usecases/home_screen_test.dart (bin sticks rendered; random-pick button highlights a stick; manual tap highlights correct stick; done button triggers MarkStickDone; empty bin renders EmptyBinPrompt)
+- [X] T043 [US3] Write failing integration test for US3 in integration_test/us3_pick_tonight_test.dart (pre-populated bin, random pick, manual pick, mark done, all-done → empty bin state shown)
 
 ### Implementation (Green → Refactor)
 
-- [ ] T044 [US3] Implement MarkStickDone use-case in lib/domain/usecases/bin/mark_stick_done.dart (atomically removes stickId from stickIds and adds to doneStickIds; calls repository)
-- [ ] T045 [US3] Implement PoolRepositoryImpl.markStickDone in lib/data/repositories/pool_repository_impl.dart (Isar write transaction; update WeeklyBinModel stickIds + doneStickIds)
-- [ ] T046 [P] [US3] Create binSticksProvider(poolId) in lib/presentation/providers/bin_providers.dart (derives non-done active sticks by joining weeklyBinProvider + poolSticksProvider; handles stale stickId references gracefully)
-- [ ] T047 [US3] Create HomeScreen in lib/presentation/screens/home/home_screen.dart (bin list as primary content; "Random pick" FAB; tap-to-highlight stick; Done button on highlighted stick; empty-bin prompt CTA → WeeklySelectionScreen; pool name chip header; semantic labels per contracts/ui-contract.md)
-- [ ] T048 [P] [US3] Create BinStickTile widget in lib/presentation/widgets/bin_stick_tile.dart (stick name; tap handler; highlighted visual state; Done button; 48dp touch target; Semantics label from ui-contract)
-- [ ] T049 [P] [US3] Create EmptyBinPrompt widget in lib/presentation/widgets/empty_bin_prompt.dart (shown when bin is null or all sticks done; CTA button navigates to WeeklySelectionScreen)
+- [X] T044 [US3] Implement MarkStickDone use-case in lib/domain/usecases/bin/mark_stick_done.dart (atomically removes stickId from stickIds and adds to doneStickIds; calls repository)
+- [X] T045 [US3] Implement PoolRepositoryImpl.markStickDone in lib/data/repositories/pool_repository_impl.dart (Isar write transaction; update WeeklyBinModel stickIds + doneStickIds)
+- [X] T046 [P] [US3] Create binSticksProvider(poolId) in lib/presentation/providers/bin_providers.dart (derives non-done active sticks by joining weeklyBinProvider + poolSticksProvider; handles stale stickId references gracefully)
+- [X] T047 [US3] Create HomeScreen in lib/presentation/screens/home/home_screen.dart (bin list as primary content; "Random pick" FAB; tap-to-highlight stick; Done button on highlighted stick; empty-bin prompt CTA → WeeklySelectionScreen; pool name chip header; semantic labels per contracts/ui-contract.md)
+- [X] T048 [P] [US3] Create BinStickTile widget in lib/presentation/widgets/bin_stick_tile.dart (stick name; tap handler; highlighted visual state; Done button; 48dp touch target; Semantics label from ui-contract)
+- [X] T049 [P] [US3] Create EmptyBinPrompt widget in lib/presentation/widgets/empty_bin_prompt.dart (shown when bin is null or all sticks done; CTA button navigates to WeeklySelectionScreen)
 
 **Checkpoint**: All three P1 user stories complete. Full end-to-end flow (add ideas → select week → pick tonight) works. T041–T043 pass. US1 + US2 unaffected.
 
@@ -138,16 +138,16 @@
 
 ### Tests — Write FIRST, confirm FAIL (Red)
 
-- [ ] T050 [P] [US4] Write failing unit tests for ReplaceBinStick use-case in test/domain/usecases/replace_bin_stick_test.dart (random mode picks from pool-not-in-bin; pick mode places specific stick; all pool sticks already in bin → `NoReplacementAvailableFailure`)
-- [ ] T051 [P] [US4] Write failing unit tests for RemoveBinStick use-case in test/domain/usecases/remove_bin_stick_test.dart (success removes from bin; stick remains accessible in pool; stick not in bin → `StickNotFoundFailure`)
-- [ ] T052 [US4] Write failing integration test for US4 in integration_test/us4_bin_adjustment_test.dart (replace random, replace pick, remove; verify pool unaffected after all operations)
+- [X] T050 [P] [US4] Write failing unit tests for ReplaceBinStick use-case in test/domain/usecases/replace_bin_stick_test.dart (random mode picks from pool-not-in-bin; pick mode places specific stick; all pool sticks already in bin → `NoReplacementAvailableFailure`)
+- [X] T051 [P] [US4] Write failing unit tests for RemoveBinStick use-case in test/domain/usecases/remove_bin_stick_test.dart (success removes from bin; stick remains accessible in pool; stick not in bin → `StickNotFoundFailure`)
+- [X] T052 [US4] Write failing integration test for US4 in integration_test/us4_bin_adjustment_test.dart (replace random, replace pick, remove; verify pool unaffected after all operations)
 
 ### Implementation (Green → Refactor)
 
-- [ ] T053 [US4] Implement ReplaceBinStick use-case in lib/domain/usecases/bin/replace_bin_stick.dart (random mode: picks random from pool sticks not already in bin; pick mode: validates target not already in bin; no eligible sticks → `NoReplacementAvailableFailure`)
-- [ ] T054 [P] [US4] Implement RemoveBinStick use-case in lib/domain/usecases/bin/remove_bin_stick.dart
-- [ ] T055 [US4] Implement PoolRepositoryImpl.replaceBinStick and removeBinStick in lib/data/repositories/pool_repository_impl.dart (both within Isar write transactions)
-- [ ] T056 [US4] Add long-press interaction to BinStickTile in lib/presentation/widgets/bin_stick_tile.dart (long-press opens action sheet: "Replace" → sub-sheet with Random/Pick One options; "Remove" with confirmation; PickOneSheet lists pool sticks not currently in bin)
+- [X] T053 [US4] Implement ReplaceBinStick use-case in lib/domain/usecases/bin/replace_bin_stick.dart (random mode: picks random from pool sticks not already in bin; pick mode: validates target not already in bin; no eligible sticks → `NoReplacementAvailableFailure`)
+- [X] T054 [P] [US4] Implement RemoveBinStick use-case in lib/domain/usecases/bin/remove_bin_stick.dart
+- [X] T055 [US4] Implement PoolRepositoryImpl.replaceBinStick and removeBinStick in lib/data/repositories/pool_repository_impl.dart (both within Isar write transactions)
+- [X] T056 [US4] Add long-press interaction to BinStickTile in lib/presentation/widgets/bin_stick_tile.dart (long-press opens action sheet: "Replace" → sub-sheet with Random/Pick One options; "Remove" with confirmation; PickOneSheet lists pool sticks not currently in bin)
 
 **Checkpoint**: User Story 4 complete. Bin adjustment works. T050–T052 pass. P1 stories unaffected.
 
@@ -161,17 +161,17 @@
 
 ### Tests — Write FIRST, confirm FAIL (Red)
 
-- [ ] T057 [P] [US5] Write failing unit tests for CreatePool use-case in test/domain/usecases/create_pool_test.dart (success; duplicate name → `DuplicateNameFailure`; empty name → error)
-- [ ] T058 [P] [US5] Write failing unit tests for RenamePool and DeletePool use-cases in test/domain/usecases/pool_lifecycle_test.dart (rename duplicate check; deletePool auto-creates "Dinner" pool when deleting last pool in same transaction)
-- [ ] T059 [US5] Write failing integration test for US5 in integration_test/us5_multiple_pools_test.dart (create Breakfast pool, populate, run selection, verify Breakfast bin independent of Dinner bin; switch pools on home screen)
+- [X] T057 [P] [US5] Write failing unit tests for CreatePool use-case in test/domain/usecases/create_pool_test.dart (success; duplicate name → `DuplicateNameFailure`; empty name → error)
+- [X] T058 [P] [US5] Write failing unit tests for RenamePool and DeletePool use-cases in test/domain/usecases/pool_lifecycle_test.dart (rename duplicate check; deletePool auto-creates "Dinner" pool when deleting last pool in same transaction)
+- [X] T059 [US5] Write failing integration test for US5 in integration_test/us5_multiple_pools_test.dart (create Breakfast pool, populate, run selection, verify Breakfast bin independent of Dinner bin; switch pools on home screen)
 
 ### Implementation (Green → Refactor)
 
-- [ ] T060 [US5] Implement CreatePool use-case in lib/domain/usecases/pool/create_pool.dart (trim name; case-insensitive duplicate check → `DuplicateNameFailure`)
-- [ ] T061 [P] [US5] Implement RenamePool use-case in lib/domain/usecases/pool/rename_pool.dart (case-insensitive duplicate check across all pools)
-- [ ] T062 [P] [US5] Implement DeletePool use-case in lib/domain/usecases/pool/delete_pool.dart (delegates to repository; repository handles auto-create-Dinner)
-- [ ] T063 [US5] Implement PoolRepositoryImpl.createPool, renamePool, deletePool in lib/data/repositories/pool_repository_impl.dart (deletePool: if deleting last pool, create new empty "Dinner" pool in same Isar write transaction before deleting)
-- [ ] T064 [US5] Create PoolSwitcherScreen in lib/presentation/screens/pool_switcher/pool_switcher_screen.dart (list all pools; active pool highlighted; tap to switch; "Add pool" action with name input; 48dp targets; Semantics labels)
+- [X] T060 [US5] Implement CreatePool use-case in lib/domain/usecases/pool/create_pool.dart (trim name; case-insensitive duplicate check → `DuplicateNameFailure`)
+- [X] T061 [P] [US5] Implement RenamePool use-case in lib/domain/usecases/pool/rename_pool.dart (case-insensitive duplicate check across all pools)
+- [X] T062 [P] [US5] Implement DeletePool use-case in lib/domain/usecases/pool/delete_pool.dart (delegates to repository; repository handles auto-create-Dinner)
+- [X] T063 [US5] Implement PoolRepositoryImpl.createPool, renamePool, deletePool in lib/data/repositories/pool_repository_impl.dart (deletePool: if deleting last pool, create new empty "Dinner" pool in same Isar write transaction before deleting)
+- [X] T064 [US5] Create PoolSwitcherScreen in lib/presentation/screens/pool_switcher/pool_switcher_screen.dart (list all pools; active pool highlighted; tap to switch; "Add pool" action with name input; 48dp targets; Semantics labels)
 
 **Checkpoint**: User Story 5 complete. Multi-pool use is fully functional. T057–T059 pass. All prior stories unaffected.
 
@@ -181,13 +181,13 @@
 
 **Purpose**: Accessibility, localization readiness, CI/CD, and performance — affects all user stories.
 
-- [ ] T065 [P] Externalize all user-visible strings to lib/l10n/app_en.arb (ARB format; configure `flutter_localizations` + `intl` in pubspec.yaml; replace all hard-coded string literals in lib/presentation/)
-- [ ] T066 [P] Accessibility audit: verify every interactive element in lib/presentation/ carries a Semantics label matching contracts/ui-contract.md; add missing `Semantics` wrappers; verify minimum 48×48dp touch targets with `debugCheckHasFlutterBinding` tool
-- [ ] T067 [P] WCAG 2.1 AA color contrast audit: verify all foreground/background color pairs meet 4.5:1 (body text) and 3:1 (UI components); document results in specs/001-dinner-sticks-app/a11y-audit.md
-- [ ] T068 Set up GitHub Actions CI pipeline in .github/workflows/ci.yml: steps → `flutter pub get` → `dart run build_runner build` → `flutter analyze` → `flutter test` → `flutter test integration_test/ -d emulator-5554` → `flutter test --coverage` with lcov ≥80% gate for lib/domain/ and lib/data/
-- [ ] T069 [P] Set up GitHub Actions iOS workflow in .github/workflows/ci-ios.yml (`macos-latest` runner; `flutter build ios --release --no-codesign`)
-- [ ] T070 Run `flutter test --coverage` locally; verify lib/domain/ and lib/data/ coverage ≥80%; write additional unit tests for any uncovered paths
-- [ ] T071 Profile cold start on Android emulator API 29: run `flutter run --profile`, measure time-to-interactive; verify <2s; document result in specs/001-dinner-sticks-app/perf-notes.md
+- [X] T065 [P] Externalize all user-visible strings to lib/l10n/app_en.arb (ARB format; configure `flutter_localizations` + `intl` in pubspec.yaml; replace all hard-coded string literals in lib/presentation/)
+- [X] T066 [P] Accessibility audit: verify every interactive element in lib/presentation/ carries a Semantics label matching contracts/ui-contract.md; add missing `Semantics` wrappers; verify minimum 48×48dp touch targets with `debugCheckHasFlutterBinding` tool
+- [X] T067 [P] WCAG 2.1 AA color contrast audit: verify all foreground/background color pairs meet 4.5:1 (body text) and 3:1 (UI components); document results in specs/001-dinner-sticks-app/a11y-audit.md
+- [X] T068 Set up GitHub Actions CI pipeline in .github/workflows/ci.yml: steps → `flutter pub get` → `dart run build_runner build` → `flutter analyze` → `flutter test` → `flutter test integration_test/ -d emulator-5554` → `flutter test --coverage` with lcov ≥80% gate for lib/domain/ and lib/data/
+- [X] T069 [P] Set up GitHub Actions iOS workflow in .github/workflows/ci-ios.yml (`macos-latest` runner; `flutter build ios --release --no-codesign`)
+- [X] T070 Run `flutter test --coverage` locally; verify lib/domain/ and lib/data/ coverage ≥80%; write additional unit tests for any uncovered paths
+- [X] T071 Profile cold start on Android emulator API 29: run `flutter run --profile`, measure time-to-interactive; verify <2s; document result in specs/001-dinner-sticks-app/perf-notes.md
 
 ---
 

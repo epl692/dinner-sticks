@@ -1,0 +1,116 @@
+name: CI
+
+on:
+  push:
+    branches: [main, '001-*', 'feature/*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  analyze-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dinner_sticks
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Unit & widget tests with coverage
+        run: flutter test --coverage
+
+      - name: Check domain coverage ≥80%
+        run: |
+          python3 - <<'EOF'
+          import re, sys
+
+          with open('coverage/lcov.info') as f:
+            content = f.read()
+
+          sections = content.split('end_of_record')
+          domain_lf = domain_lh = data_lf = data_lh = 0
+
+          for section in sections:
+            sf_match = re.search(r'^SF:(.+)$', section, re.MULTILINE)
+            if not sf_match:
+              continue
+            path = sf_match.group(1)
+            lf_match = re.search(r'^LF:(\d+)$', section, re.MULTILINE)
+            lh_match = re.search(r'^LH:(\d+)$', section, re.MULTILINE)
+            if not lf_match or not lh_match:
+              continue
+            lf = int(lf_match.group(1))
+            lh = int(lh_match.group(1))
+            if '/lib/domain/' in path:
+              domain_lf += lf
+              domain_lh += lh
+            if '/lib/data/' in path:
+              data_lf += lf
+              data_lh += lh
+
+          domain_pct = int(domain_lh * 100 / domain_lf) if domain_lf else 0
+          data_pct   = int(data_lh   * 100 / data_lf)   if data_lf   else 0
+
+          print(f"domain/ coverage: {domain_lh}/{domain_lf} = {domain_pct}%")
+          print(f"data/   coverage: {data_lh}/{data_lf} = {data_pct}%")
+
+          failed = False
+          if domain_pct < 80:
+            print(f"FAIL: domain/ coverage {domain_pct}% < 80%")
+            failed = True
+          if data_pct < 80:
+            print(f"FAIL: data/ coverage {data_pct}% < 80%")
+            failed = True
+          if failed:
+            sys.exit(1)
+          print("Coverage gates passed.")
+          EOF
+
+  integration-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dinner_sticks
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | \
+            sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run integration tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          arch: x86_64
+          working-directory: dinner_sticks
+          script: flutter test integration_test/ -d emulator-5554

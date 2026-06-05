@@ -2,7 +2,7 @@
 
 **Branch**: `001-dinner-sticks-app` | **Date**: 2026-06-05 | **Spec**: [spec.md](spec.md)
 
-**Phase Status**: Phase 1 ✅ complete | Phase 2 ✅ complete (T007–T019 all done; domain entities, Isar models, generated schemas, datasource, Riverpod provider, ProviderScope wired; `flutter analyze` clean; `flutter test` passing)
+**Phase Status**: Phase 1 ✅ complete | Phase 2 ✅ complete | Phase 3 ✅ complete | Phase 4 ✅ complete | Phase 5 ✅ complete | Phase 6 ✅ complete | Phase 7 ✅ complete | Phase 8 ✅ complete (T065–T071 all done; ARB localization, Semantics audit, WCAG 2.1 AA audit doc, GitHub Actions CI + iOS workflows, coverage domain 98% / data 91%, perf-notes.md; `flutter analyze` clean, 0 issues; 126/126 unit+widget tests passing)
 
 **Input**: Feature specification from `specs/001-dinner-sticks-app/spec.md`
 

@@ -53,3 +53,6 @@ coverage/
 # Isar database files (runtime data, not committed)
 *.isar
 *.isar.lock
+
+# Isar native library symlink (devcontainer-specific, created via ln -sf)
+libisar.so
